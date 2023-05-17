@@ -28,10 +28,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-// ADMIN ROUTE
+
+
+// ADMIN Middleware ROUTE
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 }); // End Admin Middleware
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 
 require __DIR__ . '/auth.php';

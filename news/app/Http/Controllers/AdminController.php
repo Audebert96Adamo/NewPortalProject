@@ -22,4 +22,9 @@ class AdminController extends Controller
 
         return redirect('/');
     } // End Method
+
+    public function AdminLogin()
+    {
+        return view('admin.admin_login');
+    } // End Method
 }
