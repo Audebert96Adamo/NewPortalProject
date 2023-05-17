@@ -27,4 +27,9 @@ class AdminController extends Controller
     {
         return view('admin.admin_login');
     } // End Method
+
+    public function AdminLogoutPage()
+    {
+        return view('admin.admin_logout');
+    } // End Method
 }
