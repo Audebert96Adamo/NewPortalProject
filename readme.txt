@@ -18,4 +18,10 @@ php artisan migrate:fresh --seed
 
 ** **
 
-//
+// CONTROLLER //
+** Admin Controller **
+php artisan make:controller AdminController
+
+// MIDDLEWARE //
+** Role middleware **
+php artisan make:middleware Role
