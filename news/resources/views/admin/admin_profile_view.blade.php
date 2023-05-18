@@ -50,8 +50,8 @@
         <div class="card">
           <div class="card-body">
 
-            <form>
-
+            <form method="post" action="{{ route('admin.profile.store') }}" enctype="multipart/form-data">
+              @csrf
               <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Admin Personal Info</h5>
               <div class="row">
                 <div class="col-md-6">
