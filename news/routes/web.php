@@ -30,7 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
 
 // ADMIN Middleware ROUTE
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -41,3 +40,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 }); // End Admin Middleware
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');
 Route::get('/admin/logout/page', [AdminController::class, 'AdminLogoutPage'])->name('admin.logout.page');
+
+require __DIR__ . '/auth.php';
