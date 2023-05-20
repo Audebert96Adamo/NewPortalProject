@@ -19,8 +19,15 @@ php artisan migrate:fresh --seed
 ** **
 
 // CONTROLLER //
+
+php artisan make:controller ControllerFolderName/ControllerName
+
+(if you don't writte a ControllerFolderName then the controller will be created in the Controllers main folder)
+
 ** Admin Controller **
 php artisan make:controller AdminController
+** Index Controller **
+php artisan make:controller Frontend/IndexController
 
 // MIDDLEWARE //
 ** Role middleware **
