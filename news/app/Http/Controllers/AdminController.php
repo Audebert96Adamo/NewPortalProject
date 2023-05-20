@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use PharIo\Manifest\Author;
 use App\Models\User;
 
@@ -74,7 +75,25 @@ class AdminController extends Controller
 
     public function AdminChangePassword()
     {
-
         return view('admin.admin_change_password');
+    } // End Method
+
+    public function AdminUpdatePassword(Request $request)
+    {
+        // Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required | confirmed'
+        ]);
+        // Match the old password
+        if (!Hash::check($request->old_password, Auth::user()->password)) {
+            return back()->with('error', "Old Password Doesn't Match !");
+        }
+        // Update the new password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with('status', "Password Changed Successfully");
     } // End Method
 }

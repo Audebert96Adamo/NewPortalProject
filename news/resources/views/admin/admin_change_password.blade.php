@@ -25,8 +25,18 @@
         <div class="card">
           <div class="card-body">
 
-            <form method="post" action="" enctype="multipart/form-data">
+            <form method="post" action=" {{ route('admin.update.password') }}">
               @csrf
+
+              @if (session('status'))
+              <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+              </div>
+              @elseif(session('error'))
+              <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+              </div>
+              @endif
 
               <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Change Password</h5>
               <div class="row">
@@ -35,26 +45,31 @@
                     @error('old_password')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <label for=" old-password" class="form-label">Old Password</label>
-                    <input type="password" name="old-password" class="form-control @error('old_password') is-invalid @enderror" id="current_password" value="">
+                    <label for="old_password" class="form-label">Old Password</label>
+                    <input type="password" name="old_password" class="form-control 
+                    @error('old_password') 
+                    is-invalid 
+                    @enderror" id="current_password" value="">
                   </div>
                 </div>
+
                 <div class="col-md-12">
                   <div class="mb-3">
                     @error('new_password')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    <label for="new-password" class="form-label">New Password</label>
-                    <input type="password" name="new-password" class="form-control @error('new_password') is-invalid @enderror" id="new-password" value="">
+                    <label for="new_password" class="form-label">New Password</label>
+                    <input type="password" name="new_password" class="form-control 
+                    @error('new_password') 
+                    is-invalid 
+                    @enderror" id="new_password" value="">
                   </div>
                 </div><!-- end col -->
+
                 <div class="col-md-12">
                   <div class="mb-3">
-                    @error('old_password')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-                    <label for="confirm-password" class="form-label">Confirm New Password</label>
-                    <input type="password" name="confirm-password" class="form-control @error('confirm_password') is-invalid @enderror" id="confirm-password" value="">
+                    <label for="new_password_confirmation" class="form-label">Confirm New Password</label>
+                    <input type="password" name="new_password_confirmation" class="form-control" id="new_password_confirmation" value="">
                   </div>
                 </div> <!-- end col -->
               </div> <!-- end row -->
